@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Book implements Serializable {
     
     private String isbn;
-    private String name;
+    private String title;
     private List<Author> authors;
     private String editor;
     private int publishYear;
@@ -26,9 +26,9 @@ public class Book implements Serializable {
     public Book() {
     }
 
-    public Book(String isbn, String name, List<Author> authors, String editor, int publishYear) {
+    public Book(String isbn, String title, List<Author> authors, String editor, int publishYear) {
         this.isbn = isbn;
-        this.name = name;
+        this.title = title;
         this.authors = authors;
         this.editor = editor;
         this.publishYear = publishYear;
@@ -52,11 +52,11 @@ public class Book implements Serializable {
     }
 
     public String getTitle() {
-        return name;
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public List<Author> getAuthors() {

@@ -17,8 +17,7 @@ import model.Book;
 public class BooksRepository {
 
     private static BooksRepository instance;
-    private List<Book> booksList;
-    private int autoincrement;
+    private List<Book> booksList = new ArrayList<>();
     
     
     private BooksRepository() {
