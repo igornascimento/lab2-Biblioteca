@@ -20,7 +20,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 import model.Book;
-import repository.RepositoryBooks;
+import repository.BooksRepository;
 
 /**
  * REST Web Service
@@ -42,14 +42,14 @@ public class BookWS {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Book> getBooks() {
-        return RepositoryBooks.getInstance().list();
+        return BooksRepository.getInstance().list();
     }
     
     @GET
     @Path("/{code}")
     @Produces(MediaType.APPLICATION_JSON)
     public Book getByCode(@PathParam("code") String code) {
-        return RepositoryBooks.getInstance().searchByCode(code);
+        return BooksRepository.getInstance().searchByCode(code);
     }
     
     @POST
@@ -57,14 +57,14 @@ public class BookWS {
     @Produces(MediaType.APPLICATION_JSON)
     public Book addBook(Book book, @Context final HttpServletResponse response) {
         // adds the book
-        RepositoryBooks.getInstance().insertBook(book);
+        BooksRepository.getInstance().insertBook(book);
         // generates the 201 header response
         response.setStatus(HttpServletResponse.SC_CREATED);
         
         try {
             response.flushBuffer();
             //gets the book for response in json
-            return RepositoryBooks.getInstance().searchByCode(book.getCode());
+            return BooksRepository.getInstance().searchByCode(book.getCode());
             
         } catch(IOException e) {
             // throw 500 error

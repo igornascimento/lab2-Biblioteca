@@ -14,14 +14,14 @@ import model.Book;
  *
  * @author Igor Nascimento <igornascimento@gmail.com>
  */
-public class RepositoryBooks {
+public class BooksRepository {
 
-    private static RepositoryBooks instance;
+    private static BooksRepository instance;
     private List<Book> booksList;
     private int autoincrement;
     
     
-    private RepositoryBooks() {
+    private BooksRepository() {
         // populating for tests pourpose
         List<Author> authorsList = new ArrayList<>();
         authorsList.add(new Author("William", "Shakespeare", "Brasil"));
@@ -40,9 +40,9 @@ public class RepositoryBooks {
      * The instance
      * @return RepositoryBooks instance
      */
-    public static synchronized RepositoryBooks getInstance() {
+    public static synchronized BooksRepository getInstance() {
         if (instance == null) {
-            instance = new RepositoryBooks();
+            instance = new BooksRepository();
         }
         return instance;
     }
