@@ -12,6 +12,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.InternalServerErrorException;
 import javax.ws.rs.POST;
@@ -70,5 +71,31 @@ public class BookWS {
             // throw 500 error
             throw new InternalServerErrorException();
         }
+    }
+    
+    @DELETE
+    @Path("/{code}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Book> remove(@PathParam("code") String code, @Context final HttpServletResponse response) {
+        // gets the book
+        BooksRepository instance = BooksRepository.getInstance();
+        Book b = instance.searchByCode(code);
+        
+        if (b == null) {
+            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+        }
+        
+        try {
+            response.flushBuffer();
+            instance.remove(b.getCode());
+            response.setStatus(HttpServletResponse.SC_OK);
+            return instance.list();
+            
+        } catch(IOException e) {
+            // throw 500 error
+            throw new InternalServerErrorException();
+        }
+        
+        
     }
 }

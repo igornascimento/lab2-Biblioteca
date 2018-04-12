@@ -69,7 +69,7 @@ public class BooksRepository {
      */
     public Book searchByCode(String code) {
         for (Book b : booksList) {
-            if (b.getIsbn() == code) {
+            if (b.getIsbn().equals(code)) {
                 List<Author> authorsList = new ArrayList<>();
                 
                 for (Author a : b.getAuthors()) {
