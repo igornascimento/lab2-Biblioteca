@@ -17,16 +17,16 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class Book implements Serializable {
     
-    private long isbn;
+    private String isbn;
     private String name;
     private List<Author> authors;
     private String editor;
-    private LocalDateTime publishYear;
+    private int publishYear;
 
     public Book() {
     }
 
-    public Book(long isbn, String name, List<Author> authors, String editor, LocalDateTime publishYear) {
+    public Book(String isbn, String name, List<Author> authors, String editor, int publishYear) {
         this.isbn = isbn;
         this.name = name;
         this.authors = authors;
@@ -34,15 +34,24 @@ public class Book implements Serializable {
         this.publishYear = publishYear;
     }
 
-    public long getIsbn() {
+    public String getIsbn() {
         return isbn;
     }
 
-    public void setIsbn(long isbn) {
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+    
+    // alias for ISBN
+    public String getCode() {
+        return isbn;
+    }
+
+    public void setCode(String isbn) {
         this.isbn = isbn;
     }
 
-    public String getName() {
+    public String getTitle() {
         return name;
     }
 
@@ -66,11 +75,11 @@ public class Book implements Serializable {
         this.editor = editor;
     }
 
-    public LocalDateTime getPublishYear() {
+    public int getPublishYear() {
         return publishYear;
     }
 
-    public void setPublishYear(LocalDateTime publishYear) {
+    public void setPublishYear(int publishYear) {
         this.publishYear = publishYear;
     }
     
