@@ -14,11 +14,11 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
-import javax.ws.rs.InternalServerErrorException;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import model.Book;
 import repository.BooksRepository;
@@ -68,8 +68,8 @@ public class BookWS {
             return BooksRepository.getInstance().searchByCode(book.getCode());
             
         } catch(IOException e) {
-            // throw 500 error
-            throw new InternalServerErrorException();
+            // throw 500 error (?)
+            throw new WebApplicationException();
         }
     }
     
@@ -92,8 +92,8 @@ public class BookWS {
             return instance.list();
             
         } catch(IOException e) {
-            // throw 500 error
-            throw new InternalServerErrorException();
+            // throw 500 error (?)
+            throw new WebApplicationException();
         }
         
         
