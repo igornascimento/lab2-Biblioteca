@@ -76,7 +76,7 @@ public class AuthorWS {
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Author> remove(@PathParam("id") int id, @Context final HttpServletResponse response) {
-        // gets the book
+        // gets the author
         Author a = authorRn.findById(id);
         if (a == null) {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
