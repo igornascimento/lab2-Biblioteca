@@ -6,12 +6,14 @@
 package entity;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -33,22 +35,37 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Book implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
     @Id
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 100)
     @Column(name = "isbn")
     private String isbn;
+    
     @Size(max = 100)
     @Column(name = "title")
     private String title;
+    
+    @OneToMany
+    private List<Author> authors;
+    
     @Size(max = 50)
     @Column(name = "editor")
     private String editor;
+    
     @Column(name = "publish-year")
     private Integer publishYear;
 
     public Book() {
+    }
+    
+    public Book(String isbn, String title, List<Author> authors, String editor, int publishYear) {
+        this.isbn = isbn;
+        this.title = title;
+        this.authors = authors;
+        this.editor = editor;
+        this.publishYear = publishYear;
     }
 
     public Book(String isbn) {
@@ -57,6 +74,15 @@ public class Book implements Serializable {
 
     public String getIsbn() {
         return isbn;
+    }
+    
+    // alias for ISBN
+    public String getCode() {
+        return isbn;
+    }
+
+    public void setCode(String isbn) {
+        this.isbn = isbn;
     }
 
     public void setIsbn(String isbn) {
@@ -69,6 +95,14 @@ public class Book implements Serializable {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+    
+    public List<Author> getAuthors() {
+        return authors;
+    }
+
+    public void setAuthors(List<Author> authors) {
+        this.authors = authors;
     }
 
     public String getEditor() {

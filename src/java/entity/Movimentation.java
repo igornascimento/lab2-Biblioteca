@@ -7,6 +7,7 @@ package entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -44,8 +45,16 @@ public class Movimentation implements Serializable {
     private Date date;
     @Column(name = "customer-id")
     private Integer customerId;
+    
+    private List<Book> bookList;
 
     public Movimentation() {
+    }
+    
+    public Movimentation(Integer id, List<Book> bookList, Date date) {
+        this.id = id;
+        this.bookList = bookList;
+        this.date = date;
     }
 
     public Movimentation(Integer id) {

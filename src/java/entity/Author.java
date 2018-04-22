@@ -9,9 +9,13 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -33,22 +37,34 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Author implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
     @Id
     @Basic(optional = false)
     @NotNull
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "author_seq")
+    @SequenceGenerator(name = "author_seq", sequenceName = "author_id_seq")
     @Column(name = "id")
     private Integer id;
+    
     @Size(max = 50)
     @Column(name = "name")
     private String name;
+    
     @Size(max = 50)
     @Column(name = "surname")
     private String surname;
+    
     @Size(max = 50)
     @Column(name = "country")
     private String country;
 
     public Author() {
+    }
+    
+    public Author(String name, String surname, String country) {
+        this.name = name;
+        this.surname = surname;
+        this.country = country;
     }
 
     public Author(Integer id) {

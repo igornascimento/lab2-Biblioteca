@@ -7,8 +7,8 @@ package repository;
 
 import java.util.ArrayList;
 import java.util.List;
-import model.Author;
-import model.Book;
+import entity.Author;
+import entity.Book;
 
 /**
  *
