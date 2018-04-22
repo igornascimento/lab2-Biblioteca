@@ -33,19 +33,23 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Book implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
     @Id
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 100)
     @Column(name = "isbn")
     private String isbn;
+    
     @Size(max = 100)
     @Column(name = "title")
     private String title;
+    
     @Size(max = 50)
     @Column(name = "editor")
     private String editor;
-    @Column(name = "publish-year")
+    
+    @Column(name = "publish_year")
     private Integer publishYear;
 
     public Book() {
@@ -60,6 +64,15 @@ public class Book implements Serializable {
     }
 
     public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+    
+    // alias for ISBN code
+    public String getCode() {
+        return isbn;
+    }
+
+    public void setCode(String isbn) {
         this.isbn = isbn;
     }
 

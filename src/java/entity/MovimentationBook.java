@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Igor Nascimento <igornascimento@gmail.com>
  */
 @Entity
-@Table(name = "movimentation-book")
+@Table(name = "movimentation_book")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "MovimentationBook.findAll", query = "SELECT m FROM MovimentationBook m")
@@ -36,9 +36,9 @@ public class MovimentationBook implements Serializable {
     @NotNull
     @Column(name = "id")
     private Integer id;
-    @Column(name = "movimentation-id")
+    @Column(name = "movimentation_id")
     private Integer movimentationId;
-    @Column(name = "book-id")
+    @Column(name = "book_id")
     private Integer bookId;
 
     public MovimentationBook() {

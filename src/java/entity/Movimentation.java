@@ -42,7 +42,7 @@ public class Movimentation implements Serializable {
     @Column(name = "date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
-    @Column(name = "customer-id")
+    @Column(name = "customer_id")
     private Integer customerId;
 
     public Movimentation() {
