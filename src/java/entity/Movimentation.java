@@ -7,12 +7,16 @@ package entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -34,16 +38,23 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Movimentation implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Basic(optional = false)
     @NotNull
     @Column(name = "id")
     private Integer id;
+    
     @Column(name = "date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
-    @Column(name = "customer_id")
-    private Integer customerId;
+    
+    @OneToMany
+    private Customer customer;
+    
+    @OneToMany
+    private List<Book> books;
 
     public Movimentation() {
     }
@@ -68,12 +79,20 @@ public class Movimentation implements Serializable {
         this.date = date;
     }
 
-    public Integer getCustomerId() {
-        return customerId;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setCustomerId(Integer customerId) {
-        this.customerId = customerId;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+    
+    public List<Book> getBooks() {
+        return books;
+    }
+    
+    public void setBooks(List<Book> books) {
+        this.books = books;
     }
 
     @Override
