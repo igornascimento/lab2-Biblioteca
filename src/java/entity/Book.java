@@ -10,8 +10,6 @@ import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -39,7 +37,6 @@ public class Book implements Serializable {
     private static final long serialVersionUID = 1L;
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 100)
@@ -50,17 +47,25 @@ public class Book implements Serializable {
     @Column(name = "title")
     private String title;
     
+    @OneToMany
+    private List<Author> authors;
+    
     @Size(max = 50)
     @Column(name = "editor")
     private String editor;
     
-    @Column(name = "publish_year")
+    @Column(name = "publish-year")
     private Integer publishYear;
-    
-    @OneToMany
-    private List<Author> authors;
 
     public Book() {
+    }
+    
+    public Book(String isbn, String title, List<Author> authors, String editor, int publishYear) {
+        this.isbn = isbn;
+        this.title = title;
+        this.authors = authors;
+        this.editor = editor;
+        this.publishYear = publishYear;
     }
 
     public Book(String isbn) {
@@ -70,17 +75,17 @@ public class Book implements Serializable {
     public String getIsbn() {
         return isbn;
     }
-
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
-    }
     
-    // alias for ISBN code
+    // alias for ISBN
     public String getCode() {
         return isbn;
     }
 
     public void setCode(String isbn) {
+        this.isbn = isbn;
+    }
+
+    public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
 
@@ -90,6 +95,14 @@ public class Book implements Serializable {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+    
+    public List<Author> getAuthors() {
+        return authors;
+    }
+
+    public void setAuthors(List<Author> authors) {
+        this.authors = authors;
     }
 
     public String getEditor() {
@@ -106,14 +119,6 @@ public class Book implements Serializable {
 
     public void setPublishYear(Integer publishYear) {
         this.publishYear = publishYear;
-    }
-    
-    public List<Author> getAuthors() {
-        return authors;
-    }
-    
-    public void setAuthors(List<Author> authors) {
-        this.authors = authors;
     }
 
     @Override

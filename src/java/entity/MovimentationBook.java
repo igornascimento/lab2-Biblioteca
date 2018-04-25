@@ -6,8 +6,6 @@
 package entity;
 
 import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,8 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -25,14 +21,14 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Igor Nascimento <igornascimento@gmail.com>
  */
 @Entity
-@Table(name = "movimentation")
+@Table(name = "movimentation-book")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Movimentation.findAll", query = "SELECT m FROM Movimentation m")
-    , @NamedQuery(name = "Movimentation.findById", query = "SELECT m FROM Movimentation m WHERE m.id = :id")
-    , @NamedQuery(name = "Movimentation.findByDate", query = "SELECT m FROM Movimentation m WHERE m.date = :date")
-    , @NamedQuery(name = "Movimentation.findByCustomerId", query = "SELECT m FROM Movimentation m WHERE m.customerId = :customerId")})
-public class Movimentation implements Serializable {
+    @NamedQuery(name = "MovimentationBook.findAll", query = "SELECT m FROM MovimentationBook m")
+    , @NamedQuery(name = "MovimentationBook.findById", query = "SELECT m FROM MovimentationBook m WHERE m.id = :id")
+    , @NamedQuery(name = "MovimentationBook.findByMovimentationId", query = "SELECT m FROM MovimentationBook m WHERE m.movimentationId = :movimentationId")
+    , @NamedQuery(name = "MovimentationBook.findByBookId", query = "SELECT m FROM MovimentationBook m WHERE m.bookId = :bookId")})
+public class MovimentationBook implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -40,24 +36,15 @@ public class Movimentation implements Serializable {
     @NotNull
     @Column(name = "id")
     private Integer id;
-    @Column(name = "date")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date date;
-    @Column(name = "customer-id")
-    private Integer customerId;
-    
-    private List<Book> bookList;
+    @Column(name = "movimentation-id")
+    private Integer movimentationId;
+    @Column(name = "book-id")
+    private Integer bookId;
 
-    public Movimentation() {
-    }
-    
-    public Movimentation(Integer id, List<Book> bookList, Date date) {
-        this.id = id;
-        this.bookList = bookList;
-        this.date = date;
+    public MovimentationBook() {
     }
 
-    public Movimentation(Integer id) {
+    public MovimentationBook(Integer id) {
         this.id = id;
     }
 
@@ -69,20 +56,20 @@ public class Movimentation implements Serializable {
         this.id = id;
     }
 
-    public Date getDate() {
-        return date;
+    public Integer getMovimentationId() {
+        return movimentationId;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setMovimentationId(Integer movimentationId) {
+        this.movimentationId = movimentationId;
     }
 
-    public Integer getCustomerId() {
-        return customerId;
+    public Integer getBookId() {
+        return bookId;
     }
 
-    public void setCustomerId(Integer customerId) {
-        this.customerId = customerId;
+    public void setBookId(Integer bookId) {
+        this.bookId = bookId;
     }
 
     @Override
@@ -95,10 +82,10 @@ public class Movimentation implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Movimentation)) {
+        if (!(object instanceof MovimentationBook)) {
             return false;
         }
-        Movimentation other = (Movimentation) object;
+        MovimentationBook other = (MovimentationBook) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -107,7 +94,7 @@ public class Movimentation implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Movimentation[ id=" + id + " ]";
+        return "entity.MovimentationBook[ id=" + id + " ]";
     }
     
 }

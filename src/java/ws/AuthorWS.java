@@ -14,7 +14,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
-//import javax.ws.rs.InternalServerErrorException;
+import javax.ws.rs.InternalServerErrorException;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
@@ -28,7 +28,7 @@ import rn.AuthorRN;
  *
  * @author Igor Nascimento <igornascimento@gmail.com>
  */
-@Path("authors")
+@Path("author")
 public class AuthorWS {
 
     private AuthorRN authorRn = new AuthorRN();
@@ -58,7 +58,7 @@ public class AuthorWS {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Author addAuthor(Author author, @Context final HttpServletResponse response) {
+    public Author addBook(Author author, @Context final HttpServletResponse response) {
         try {
             authorRn.insert(author);
             // generates the 201 header response
@@ -68,7 +68,7 @@ public class AuthorWS {
             return authorRn.findById(author.getId());
         } catch(Exception e) {
             // throw 500 error
-            throw new InternalError();
+            throw new InternalServerErrorException();
         }
     }
     
@@ -76,7 +76,7 @@ public class AuthorWS {
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Author> remove(@PathParam("id") int id, @Context final HttpServletResponse response) {
-        // gets the author
+        // gets the book
         Author a = authorRn.findById(id);
         if (a == null) {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
@@ -90,7 +90,7 @@ public class AuthorWS {
             
         } catch(IOException e) {
             // throw 500 error
-            throw new InternalError();
+            throw new InternalServerErrorException();
         }
         
         

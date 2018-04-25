@@ -14,14 +14,14 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
-//import javax.ws.rs.InternalServerErrorException;
+import javax.ws.rs.InternalServerErrorException;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 import entity.Book;
-import rn.BookRN;
+import repository.BooksRepository;
 
 /**
  * REST Web Service
@@ -31,8 +31,6 @@ import rn.BookRN;
 @Path("books")
 public class BookWS {
 
-    private BookRN bookRn = new BookRN();
-    
     @Context
     private UriInfo context;
 
@@ -45,32 +43,33 @@ public class BookWS {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Book> getBooks() {
-        return bookRn.list();
+        return BooksRepository.getInstance().list();
     }
     
     @GET
     @Path("/{code}")
     @Produces(MediaType.APPLICATION_JSON)
     public Book getByCode(@PathParam("code") String code) {
-        return bookRn.findByCode(code);
+        return BooksRepository.getInstance().searchByCode(code);
     }
     
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Book addBook(Book book, @Context final HttpServletResponse response) throws Exception {
+    public Book addBook(Book book, @Context final HttpServletResponse response) {
         // adds the book
-        bookRn.insert(book);
+        BooksRepository.getInstance().insertBook(book);
         // generates the 201 header response
         response.setStatus(HttpServletResponse.SC_CREATED);
         
         try {
             response.flushBuffer();
             //gets the book for response in json
-            return bookRn.findByCode(book.getCode());
+            return BooksRepository.getInstance().searchByCode(book.getCode());
+            
         } catch(IOException e) {
             // throw 500 error
-            throw new InternalError();
+            throw new InternalServerErrorException();
         }
     }
     
@@ -79,20 +78,22 @@ public class BookWS {
     @Produces(MediaType.APPLICATION_JSON)
     public List<Book> remove(@PathParam("code") String code, @Context final HttpServletResponse response) {
         // gets the book
-        Book b = bookRn.findByCode(code);
+        BooksRepository instance = BooksRepository.getInstance();
+        Book b = instance.searchByCode(code);
+        
         if (b == null) {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
         }
         
         try {
             response.flushBuffer();
-            bookRn.remove(b.getCode());
+            instance.remove(b.getCode());
             response.setStatus(HttpServletResponse.SC_OK);
-            return bookRn.list();
+            return instance.list();
             
         } catch(IOException e) {
             // throw 500 error
-            throw new InternalError();
+            throw new InternalServerErrorException();
         }
         
         
