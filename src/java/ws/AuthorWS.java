@@ -75,7 +75,7 @@ public class AuthorWS {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Author update(Author author, @Context final HttpServletResponse resonse) {
+    public Author update(Author author, @Context final HttpServletResponse response) {
         try {
             Author updated = authorRn.findById(author.getId());
             updated.setName(author.getName());
