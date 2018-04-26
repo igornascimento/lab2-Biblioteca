@@ -11,9 +11,15 @@ import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -35,17 +41,25 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Movimentation implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
     @Id
     @Basic(optional = false)
     @NotNull
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "movimentation_seq")
+    @SequenceGenerator(name = "movimentation_seq", sequenceName = "movimentation_id_seq")
     @Column(name = "id")
     private Integer id;
+    
     @Column(name = "date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
-    @Column(name = "customer-id")
+    
+    @Column(name = "customer_id")
+    @OneToOne(targetEntity=Customer.class)
+    @JoinColumn(name="customer_id", referencedColumnName="id")
     private Integer customerId;
     
+    @OneToMany(targetEntity=Book.class)
     private List<Book> bookList;
 
     public Movimentation() {
@@ -83,6 +97,14 @@ public class Movimentation implements Serializable {
 
     public void setCustomerId(Integer customerId) {
         this.customerId = customerId;
+    }
+
+    public List<Book> getBookList() {
+        return bookList;
+    }
+
+    public void setBookList(List<Book> bookList) {
+        this.bookList = bookList;
     }
 
     @Override
