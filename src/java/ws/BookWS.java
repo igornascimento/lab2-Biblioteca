@@ -73,6 +73,24 @@ public class BookWS {
         }
     }
     
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Book update(Book book, @Context final HttpServletResponse response) {
+        try {
+            Book updated = bookRn.findByCode(book.getCode());
+            updated.setTitle(book.getTitle());
+            updated.setAuthors(book.getAuthors());
+            updated.setEditor(book.getEditor());
+            updated.setPublishYear(book.getPublishYear());
+            bookRn.update(updated);
+            return updated;
+        } catch(Exception e) {
+            // throw 500 error
+            throw new InternalServerErrorException();
+        }
+    }
+    
     @DELETE
     @Path("/{code}")
     @Produces(MediaType.APPLICATION_JSON)
