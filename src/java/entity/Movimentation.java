@@ -54,7 +54,6 @@ public class Movimentation implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
     
-    @Column(name = "customer_id")
     @OneToOne(targetEntity=Customer.class)
     @JoinColumn(name="customer_id", referencedColumnName="id")
     private Integer customerId;
