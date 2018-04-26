@@ -21,7 +21,7 @@ public class BookRN {
     }
     
     public Book insert(Book book) throws Exception {
-        if (book.getCode().equals("") || book.getTitle().equals("") || book.getEditor().equals("")) {
+        if (book.getCode().equals("") || book.getTitle().equals("") || book.getEditor().equals("") || book.getAuthors() == null) {
             throw new Exception("Dados informados inválidos");
         }
         EntityManager manager = JPAUtil.createManager();
@@ -55,12 +55,12 @@ public class BookRN {
     
     public Book remove(String code) {
         EntityManager manager = JPAUtil.createManager();
-        Book author = manager.find(Book.class, code);
+        Book book = manager.find(Book.class, code);
         manager.getTransaction().begin();
-        manager.remove(author);
+        manager.remove(book);
         manager.getTransaction().commit();
         manager.close();
-        return author;
+        return book;
     }
     
     public List<Book> list() {

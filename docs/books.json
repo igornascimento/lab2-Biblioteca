@@ -1,0 +1,34 @@
+[{
+  "authors": [{
+    "country": "Portugal",
+    "name": "JosÃ©",
+    "surname": "Saramago"
+  }],
+  "code": "8582850409",
+  "editor": "Centaur Editions",
+  "isbn": "8582850409",
+  "publishYear": 2013,
+  "title": "Romeu e Julieta"
+}, {
+  "authors": [{
+    "country": "Portugal",
+    "name": "JosÃ©",
+    "surname": "Saramago"
+  }],
+  "code": "856356093X",
+  "editor": "Penguim",
+  "isbn": "856356093X",
+  "publishYear": 2014,
+  "title": "O Alienista"
+}, {
+  "authors": [{
+    "country": "Portugal",
+    "name": "JosÃ©",
+    "surname": "Saramago"
+  }],
+  "code": "8571644950",
+  "editor": "Companhia das Letras",
+  "isbn": "8571644950",
+  "publishYear": 1995,
+  "title": "Ensaio sobre a cegueira"
+}]

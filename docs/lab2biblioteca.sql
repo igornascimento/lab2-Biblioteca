@@ -43,47 +43,57 @@ CREATE TABLE lab2biblioteca.movimentation-book (
 
 --- POSTGRE --
 
-CREATE DATABASE lab2biblioteca;
+CREATE DATABASE postgres;
 
 
-CREATE TABLE lab2biblioteca.author (
+CREATE TABLE postgres.author (
   id integer NOT NULL,
   name character(50),
   surname character(50),
-  country character(50)
+  country character(50),
+  book_id character(50)
 )
 WITH (
   OIDS=FALSE
 );
-ALTER TABLE lab2biblioteca.author
+ALTER TABLE postgres.author
   OWNER TO postgres;
 
 
 
-CREATE TABLE lab2biblioteca.book (
+CREATE TABLE postgres.book (
   isbn VARCHAR(100) NOT NULL,
   title VARCHAR(100) NULL,
   editor VARCHAR(50) NULL,
-  publish-year INT NULL,
+  publish_year INT NULL,
   PRIMARY KEY (isbn));
 
 
-CREATE TABLE lab2biblioteca.customer (
+CREATE TABLE postgres.customer (
   id INT NOT NULL,
   name VARCHAR(50) NULL,
   phone INT NULL,
   PRIMARY KEY (id));
 
 
-CREATE TABLE lab2biblioteca.movimentation (
+CREATE TABLE postgres.movimentation (
   id INT NOT NULL,
   date INTERVAL NULL,
-  customer-id INT NULL,
+  customer_id INT NULL,
   PRIMARY KEY (id));
 
 
-CREATE TABLE lab2biblioteca.movimentation-book (
+CREATE TABLE postgres.movimentation_book (
   id INT NOT NULL,
-  movimentation-id INT NULL,
-  book-id INT NULL,
+  movimentation_id INT NULL,
+  book_id INT NULL,
   PRIMARY KEY (id));
+
+
+
+-------------------------------------------
+
+insert into book
+(isbn, title, editor, publish_year)
+values
+('8571644950', 'Ensaio sobre a cegueira', 'Companhia das Letras', 1995)

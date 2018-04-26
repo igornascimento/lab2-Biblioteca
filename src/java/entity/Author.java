@@ -57,6 +57,10 @@ public class Author implements Serializable {
     @Size(max = 50)
     @Column(name = "country")
     private String country;
+    
+    @Size(max = 50)
+    @Column(name = "book_id")
+    private String bookId;
 
     public Author() {
     }
@@ -101,6 +105,14 @@ public class Author implements Serializable {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public String getBookId() {
+        return bookId;
+    }
+
+    public void setBookId(String bookId) {
+        this.bookId = bookId;
     }
 
     @Override

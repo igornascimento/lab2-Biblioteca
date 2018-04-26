@@ -28,7 +28,7 @@ import rn.AuthorRN;
  *
  * @author Igor Nascimento <igornascimento@gmail.com>
  */
-@Path("author")
+@Path("authors")
 public class AuthorWS {
 
     private AuthorRN authorRn = new AuthorRN();

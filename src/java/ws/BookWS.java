@@ -22,6 +22,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 import entity.Book;
 import repository.BooksRepository;
+import rn.BookRN;
 
 /**
  * REST Web Service
@@ -31,6 +32,8 @@ import repository.BooksRepository;
 @Path("books")
 public class BookWS {
 
+    private BookRN bookRn = new BookRN();
+    
     @Context
     private UriInfo context;
 
@@ -43,31 +46,28 @@ public class BookWS {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Book> getBooks() {
-        return BooksRepository.getInstance().list();
+        return bookRn.list();
     }
     
     @GET
     @Path("/{code}")
     @Produces(MediaType.APPLICATION_JSON)
     public Book getByCode(@PathParam("code") String code) {
-        return BooksRepository.getInstance().searchByCode(code);
+        return bookRn.findByCode(code);
     }
     
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Book addBook(Book book, @Context final HttpServletResponse response) {
-        // adds the book
-        BooksRepository.getInstance().insertBook(book);
-        // generates the 201 header response
-        response.setStatus(HttpServletResponse.SC_CREATED);
-        
         try {
+            bookRn.insert(book);
+            // generates the 201 header response
+            response.setStatus(HttpServletResponse.SC_CREATED);
             response.flushBuffer();
             //gets the book for response in json
-            return BooksRepository.getInstance().searchByCode(book.getCode());
-            
-        } catch(IOException e) {
+            return bookRn.findByCode(book.getCode());
+        } catch(Exception e) {
             // throw 500 error
             throw new InternalServerErrorException();
         }
@@ -78,24 +78,20 @@ public class BookWS {
     @Produces(MediaType.APPLICATION_JSON)
     public List<Book> remove(@PathParam("code") String code, @Context final HttpServletResponse response) {
         // gets the book
-        BooksRepository instance = BooksRepository.getInstance();
-        Book b = instance.searchByCode(code);
-        
+        Book b = bookRn.findByCode(code);
         if (b == null) {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
         }
         
         try {
             response.flushBuffer();
-            instance.remove(b.getCode());
+            bookRn.remove(b.getCode());
             response.setStatus(HttpServletResponse.SC_OK);
-            return instance.list();
+            return bookRn.list();
             
         } catch(IOException e) {
             // throw 500 error
             throw new InternalServerErrorException();
         }
-        
-        
     }
 }
