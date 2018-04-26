@@ -72,6 +72,23 @@ public class AuthorWS {
         }
     }
     
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Author update(Author author, @Context final HttpServletResponse resonse) {
+        try {
+            Author updated = authorRn.findById(author.getId());
+            updated.setName(author.getName());
+            updated.setSurname(author.getSurname());
+            updated.setCountry(author.getCountry());
+            authorRn.update(updated);
+            return updated;
+        } catch(Exception e) {
+            // throw 500 error
+            throw new InternalServerErrorException();
+        }
+    }
+    
     @DELETE
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
