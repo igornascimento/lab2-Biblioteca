@@ -47,6 +47,7 @@ public class AuthorRN {
         updated.setName(author.getName());
         updated.setSurname(author.getSurname());
         updated.setCountry(author.getCountry());
+        updated.setBookId(author.getBookId());
         manager.getTransaction().commit();
         manager.close();
         return updated;

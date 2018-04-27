@@ -73,14 +73,16 @@ public class AuthorWS {
     }
     
     @PUT
+    @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Author update(Author author, @Context final HttpServletResponse response) {
+    public Author update(@PathParam("id") int id, Author author, @Context final HttpServletResponse response) {
         try {
-            Author updated = authorRn.findById(author.getId());
+            Author updated = authorRn.findById(id);
             updated.setName(author.getName());
             updated.setSurname(author.getSurname());
             updated.setCountry(author.getCountry());
+            updated.setBookId(author.getBookId());
             authorRn.update(updated);
             return updated;
         } catch(Exception e) {

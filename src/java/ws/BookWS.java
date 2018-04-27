@@ -74,11 +74,12 @@ public class BookWS {
     }
     
     @PUT
+    @Path("/{code}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Book update(Book book, @Context final HttpServletResponse response) {
+    public Book update(@PathParam("code") String code, Book book, @Context final HttpServletResponse response) {
         try {
-            Book updated = bookRn.findByCode(book.getCode());
+            Book updated = bookRn.findByCode(code);
             updated.setTitle(book.getTitle());
             updated.setAuthors(book.getAuthors());
             updated.setEditor(book.getEditor());

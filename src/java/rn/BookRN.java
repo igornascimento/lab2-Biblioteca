@@ -24,6 +24,10 @@ public class BookRN {
         if (book.getCode().equals("") || book.getTitle().equals("") || book.getEditor().equals("") || book.getAuthors() == null) {
             throw new Exception("Dados informados inválidos");
         }
+        Book b = findByCode(book.getCode());
+        if (b != null) {
+            throw new Exception("Registro já existente.");
+        }
         EntityManager manager = JPAUtil.createManager();
         manager.getTransaction().begin();
         manager.persist(book);
