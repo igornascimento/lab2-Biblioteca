@@ -33,7 +33,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Author.findAll", query = "SELECT a FROM Author a")
     , @NamedQuery(name = "Author.findById", query = "SELECT a FROM Author a WHERE a.id = :id")
-    , @NamedQuery(name = "Author.findByName", query = "SELECT a FROM Author a WHERE a.name = :name")
+    , @NamedQuery(name = "Author.findByNameAndSurname", query = "SELECT a FROM Author a WHERE a.name = :name AND a.surname = :surname")
     , @NamedQuery(name = "Author.findBySurname", query = "SELECT a FROM Author a WHERE a.surname = :surname")
     , @NamedQuery(name = "Author.findByCountry", query = "SELECT a FROM Author a WHERE a.country = :country")})
 public class Author implements Serializable {
