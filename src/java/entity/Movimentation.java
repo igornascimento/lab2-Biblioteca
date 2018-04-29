@@ -56,16 +56,17 @@ public class Movimentation implements Serializable {
     
     @OneToOne(targetEntity=Customer.class)
     @JoinColumn(name="customer_id", referencedColumnName="id")
-    private Integer customerId;
+    private Customer customer;
     
     @OneToMany(targetEntity=Book.class)
+    @JoinColumn(name="id", referencedColumnName="id")
     private List<Book> bookList;
 
     public Movimentation() {
     }
     
-    public Movimentation(Integer id, List<Book> bookList, Date date) {
-        this.id = id;
+    public Movimentation(Customer customer, List<Book> bookList, Date date) {
+        this.customer = customer;
         this.bookList = bookList;
         this.date = date;
     }
@@ -90,12 +91,12 @@ public class Movimentation implements Serializable {
         this.date = date;
     }
 
-    public Integer getCustomerId() {
-        return customerId;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setCustomerId(Integer customerId) {
-        this.customerId = customerId;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public List<Book> getBookList() {

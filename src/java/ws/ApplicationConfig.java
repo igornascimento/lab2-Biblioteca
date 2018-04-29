@@ -31,6 +31,7 @@ public class ApplicationConfig extends Application {
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(ws.AuthorWS.class);
         resources.add(ws.BookWS.class);
+        resources.add(ws.MovimentationWS.class);
     }
     
 }
