@@ -24,7 +24,7 @@ public class AuthorRN {
         if (author.getName().equals("") || author.getSurname().equals("") || author.getCountry().equals("")) {
             throw new Exception("Dados informados inválidos");
         }
-        if (findByNameSurname(author.getName(), author.getSurname()) != null) {
+        if (checkByNameSurname(author.getName(), author.getSurname())) {
             throw new Exception("Autor existente.");
         }
         EntityManager manager = JPAUtil.createManager();
@@ -43,12 +43,15 @@ public class AuthorRN {
         return author;
     }
     
-    public Author findByNameSurname(String name, String surname) {
+    public boolean checkByNameSurname(String name, String surname) {
         EntityManager manager = JPAUtil.createManager();
-        return (Author) manager.createNamedQuery("Author.findByNameAndSurname")
+        List<Author> authors = manager.createNamedQuery("Author.findByNameAndSurname")
                                 .setParameter("name", name)
                                 .setParameter("surname", surname)
-                                .getSingleResult();
+                                .getResultList();
+        if (authors.size() > 0)
+            return true;
+        return false;
     }
     
     public Author update(Author author) {

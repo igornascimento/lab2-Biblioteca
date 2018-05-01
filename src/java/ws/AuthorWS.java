@@ -68,6 +68,7 @@ public class AuthorWS {
             return authorRn.findById(author.getId());
         } catch(Exception e) {
             // throw 500 error
+            //return "{'errorCode':403, 'errorMessage':'Registro já existente.'}";
             throw new InternalServerErrorException();
         }
     }
