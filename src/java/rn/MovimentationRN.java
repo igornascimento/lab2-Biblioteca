@@ -6,6 +6,7 @@
 package rn;
 
 import entity.Movimentation;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -24,6 +25,8 @@ public class MovimentationRN {
         if (mov.getCustomer().getName().equals("") || mov.getBookList().isEmpty()) {
             throw new Exception("Dados informados inválidos");
         }
+        Date dt = new Date();
+        mov.setDate(dt);
         EntityManager manager = JPAUtil.createManager();
         manager.getTransaction().begin();
         manager.persist(mov);
