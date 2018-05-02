@@ -8,6 +8,7 @@ package entity;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -48,7 +49,7 @@ public class Book implements Serializable {
     @Column(name = "title")
     private String title;
     
-    @OneToMany(targetEntity=Author.class)
+    @OneToMany(targetEntity=Author.class, cascade=CascadeType.ALL)
     @JoinColumn(name="book_id", referencedColumnName="isbn")
     private List<Author> authors;
     
