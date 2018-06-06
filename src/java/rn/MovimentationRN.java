@@ -25,8 +25,7 @@ public class MovimentationRN {
         if (mov.getCustomer().getName().equals("") || mov.getBookList().isEmpty()) {
             throw new Exception("Dados informados inválidos");
         }
-        Date dt = new Date();
-        mov.setDate(dt);
+        mov.setDate(new Date());
         EntityManager manager = JPAUtil.createManager();
         manager.getTransaction().begin();
         manager.persist(mov);
