@@ -1,14 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="bootstrap-4.1.1-dist/css/bootstrap.min.css">
-    <script src="bootstrap-4.1.1-dist/js/bootstrap.min.js"></script>
-    <title>lab2-Biblioteca</title>
-</head>
-<body>
-    
-</body>
+<html>
+    <head>
+        <title>lab2-Biblioteca - Biblioteca Municipal</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="./css/main.css"></link>
+		<link rel="stylesheet" href="./bootstrap-4.1.1-dist/css/bootstrap-reboot.min.css"></link>
+		<link rel="stylesheet" href="./bootstrap-4.1.1-dist/css/bootstrap.min.css"></link>
+		<link rel="stylesheet" href="./bootstrap-4.1.1-dist/css/bootstrap-grid.min.css"></link>
+    </head>
+    <body>
+        <header>
+			<div class="container">
+				<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+					<a class="navbar-brand" href="#">Biblioteca</a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarNav">
+						<ul class="navbar-nav">
+							<li class="nav-item">
+								<a class="nav-link" href="#">livors <span class="sr-only">(current)</span></a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">Usuários</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link disabled" href="#">Locações</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+			
+        	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	        	<dl id="section-livros">
+	        		<dt>Livros</dt>
+	        		<dd><a href="#">listar</a></dd>
+	        		<dd><a href="#">Buscar</a></dd>
+	        		<dd><a href="#">Cadastrar</a></dd>
+	        	</dl>
+	        	<dl id="section-usuarios">
+	        		<dt>usuários</dt>
+	        		<dd><a href="#">listar</a></dd>
+	        		<dd><a href="#">Buscar</a></dd>
+	        		<dd><a href="#">Cadastrar</a></dd>
+	        	</dl>
+	        	<dl id="section-locacoes">
+	        		<dt>Locações</dt>
+	        		<dd><a href="#">listar</a></dd>
+	        		<dd><a href="#">Buscar</a></dd>
+	        		<dd><a href="#">Cadastrar</a></dd>
+	        	</dl>
+	        </nav>
+        </header>
+    	
+    	<article id="response">
+			<h1>Biblioteca Municipal - lab2-Biblioteca</h1>
+			<p>Bem Vindo à Bibloteca Municipal. Utilize o menu principal para navegar nos exemplares disponíveis.</p>
+    		<dl>
+    			<dt>definition term</dt>
+    			<dd><img src=""></dd>
+    			<dd>description</dd>
+    		</dl>
+    	</article>
+
+
+        <script src="./js/test.js"></script>
+        <script src="./js/jquery-3.3.1.min.js"></script>
+		<script src="./js/popper.min.js"></script>
+		<script src="./bootstrap-4.1.1-dist/js/bootstrap.min.js"></script>
+    </body>
 </html>
