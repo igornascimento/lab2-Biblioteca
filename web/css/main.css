@@ -19,3 +19,6 @@ a, a:hover {
 	background: #CCC;
 }
 
+.search-custom-button {
+	margin: 0 0 3px 5px;
+}

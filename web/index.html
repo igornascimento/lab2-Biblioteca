@@ -7,31 +7,36 @@
 		<link rel="stylesheet" href="./css/main.css"></link>
 		<link rel="stylesheet" href="./bootstrap-4.1.1-dist/css/bootstrap-reboot.min.css"></link>
 		<link rel="stylesheet" href="./bootstrap-4.1.1-dist/css/bootstrap.min.css"></link>
-		<link rel="stylesheet" href="./bootstrap-4.1.1-dist/css/bootstrap-grid.min.css"></link>
+        <link rel="stylesheet" href="./bootstrap-4.1.1-dist/css/bootstrap-grid.min.css"></link>
+        <link rel="stylesheet" href="./css/material-icons.css">
     </head>
     <body>
         <header>
-			<div class="container">
-				<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-					<a class="navbar-brand" href="#">Biblioteca</a>
-					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-						<span class="navbar-toggler-icon"></span>
-					</button>
-					<div class="collapse navbar-collapse" id="navbarNav">
-						<ul class="navbar-nav">
-							<li class="nav-item">
-								<a class="nav-link" href="#">livors <span class="sr-only">(current)</span></a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="#">Usuários</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link disabled" href="#">Locações</a>
-							</li>
-						</ul>
-					</div>
-				</nav>
-			</div>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container">
+                    <a class="navbar-brand" href="#">Biblioteca</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><span class="material-icons md-18">school</span> Livros <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><span class="material-icons md-18">people</span> Usuários</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"> <span class="material-icons md-18">local_library</span> Locações</a>
+                            </li>
+                        </ul>
+                        <form class="form-inline my-2 my-md-0">
+                            <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+                            <span class="material-icons md-light md-36 search-custom-button">search</span>
+                        </form>
+                    </div>
+                </div>
+            </nav>
 			
         	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 	        	<dl id="section-livros">
