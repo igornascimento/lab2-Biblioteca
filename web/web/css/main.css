@@ -1,0 +1,21 @@
+body {
+	font: 12px normal Verdana, Helvetica;
+}
+a, a:hover {
+	text-decoration: none;
+}
+.menu li {
+	float: left;
+	margin-right: 3px;
+}
+.menu li a, .menu li a:hover {
+	display: block;
+	line-height: 12px;
+	padding: 8px 25px;
+	border: solid 1px black;
+	border-radius: 3px;
+}
+.menu li a:hover {
+	background: #CCC;
+}
+
