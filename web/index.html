@@ -4,76 +4,71 @@
         <title>lab2-Biblioteca - Biblioteca Municipal</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="./css/main.css"></link>
-		<link rel="stylesheet" href="./bootstrap-4.1.1-dist/css/bootstrap-reboot.min.css"></link>
-		<link rel="stylesheet" href="./bootstrap-4.1.1-dist/css/bootstrap.min.css"></link>
+        <link rel="stylesheet" href="./bootstrap-4.1.1-dist/css/bootstrap-reboot.min.css"></link>
+        <link rel="stylesheet" href="./bootstrap-4.1.1-dist/css/bootstrap.min.css"></link>
         <link rel="stylesheet" href="./bootstrap-4.1.1-dist/css/bootstrap-grid.min.css"></link>
         <link rel="stylesheet" href="./css/material-icons.css">
+		<link rel="stylesheet" href="./css/main.css"></link>
     </head>
     <body>
         <header>
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container">
                     <a class="navbar-brand" href="#">Biblioteca</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav mr-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#"><span class="material-icons md-18">school</span> Livros <span class="sr-only">(current)</span></a>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="#" id="dropdown-livros" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="material-icons md-18">school</span> Livros <span class="sr-only">(current)</span>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdown-livros">
+                                    <a href="#livros/listar" class="dropdown-item">Listar</a>
+                                    <a href="#livros/buscar" class="dropdown-item">Buscar</a>
+                                    <a href="#livros/cadastrar" class="dropdown-item">Cadastrar</a>
+                                </div>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#"><span class="material-icons md-18">people</span> Usuários</a>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="#"  id="dropdown-usuarios" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="material-icons md-18">people</span> Usuários</a>
+                                <div class="dropdown-menu" aria-labelledby="dropdown-usuarios">
+                                    <a href="#usuarios/listar" class="dropdown-item">Listar</a>
+                                    <a href="#usuarios/buscar" class="dropdown-item">Buscar</a>
+                                    <a href="#usuarios/cadastrar" class="dropdown-item">Cadastrar</a>
+                                </div>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#"> <span class="material-icons md-18">local_library</span> Locações</a>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="#"  id="dropdown-locacoes" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="material-icons md-18">local_library</span> Locações</a>
+                                <div class="dropdown-menu" aria-labelledby="dropdown-locacoes">
+                                    <a href="#locacoes/listar" class="dropdown-item">Listar</a>
+                                    <a href="#locacoes/buscar" class="dropdown-item">Buscar</a>
+                                    <a href="#locacoes/cadastrar" class="dropdown-item">Cadastrar</a>
+                                </div>
                             </li>
                         </ul>
                         <form class="form-inline my-2 my-md-0">
-                            <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+                            <input class="form-control" type="text" placeholder="Busca rápida" aria-label="Busca rápida">
                             <span class="material-icons md-light md-36 search-custom-button">search</span>
                         </form>
                     </div>
                 </div>
             </nav>
-			
-        	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-	        	<dl id="section-livros">
-	        		<dt>Livros</dt>
-	        		<dd><a href="#">listar</a></dd>
-	        		<dd><a href="#">Buscar</a></dd>
-	        		<dd><a href="#">Cadastrar</a></dd>
-	        	</dl>
-	        	<dl id="section-usuarios">
-	        		<dt>usuários</dt>
-	        		<dd><a href="#">listar</a></dd>
-	        		<dd><a href="#">Buscar</a></dd>
-	        		<dd><a href="#">Cadastrar</a></dd>
-	        	</dl>
-	        	<dl id="section-locacoes">
-	        		<dt>Locações</dt>
-	        		<dd><a href="#">listar</a></dd>
-	        		<dd><a href="#">Buscar</a></dd>
-	        		<dd><a href="#">Cadastrar</a></dd>
-	        	</dl>
-	        </nav>
         </header>
     	
-    	<article id="response">
-			<h1>Biblioteca Municipal - lab2-Biblioteca</h1>
-			<p>Bem Vindo à Bibloteca Municipal. Utilize o menu principal para navegar nos exemplares disponíveis.</p>
-    		<dl>
-    			<dt>definition term</dt>
-    			<dd><img src=""></dd>
-    			<dd>description</dd>
-    		</dl>
-    	</article>
+        <div class="container">
+            <article id="response">
+
+                <div class="presentation">
+                    <h1>Biblioteca Municipal</h1>
+                    <p>Bem Vindo à Bibloteca Municipal. Utilize o menu principal para navegar nos exemplares disponíveis.</p>
+                </div>
+
+            </article>
+        </div>
 
 
-        <script src="./js/test.js"></script>
         <script src="./js/jquery-3.3.1.min.js"></script>
-		<script src="./js/popper.min.js"></script>
-		<script src="./bootstrap-4.1.1-dist/js/bootstrap.min.js"></script>
+        <script src="./js/popper.min.js"></script>
+        <script src="./bootstrap-4.1.1-dist/js/bootstrap.min.js"></script>
+        <script src="./js/livros.js"></script>
     </body>
 </html>
