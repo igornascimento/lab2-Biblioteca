@@ -49,6 +49,12 @@ public class BookWS {
     }
     
     @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Book> findByTitle(@PathParam("title") String title) {
+        return bookRn.findByTitle(title);
+    }
+    
+    @GET
     @Path("/{code}")
     @Produces(MediaType.APPLICATION_JSON)
     public Book getByCode(@PathParam("code") String code) {

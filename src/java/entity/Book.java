@@ -31,8 +31,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Book.findAll", query = "SELECT b FROM Book b")
     , @NamedQuery(name = "Book.findByIsbn", query = "SELECT b FROM Book b WHERE b.isbn = :isbn")
-    , @NamedQuery(name = "Book.findByTitle", query = "SELECT b FROM Book b WHERE b.title = :title")
-    , @NamedQuery(name = "Book.findByEditor", query = "SELECT b FROM Book b WHERE b.editor = :editor")
+    , @NamedQuery(name = "Book.findByTitle", query = "SELECT b FROM Book b WHERE b.title like :title")
+    , @NamedQuery(name = "Book.findByEditor", query = "SELECT b FROM Book b WHERE b.editor like :editor")
     , @NamedQuery(name = "Book.findByPublishYear", query = "SELECT b FROM Book b WHERE b.publishYear = :publishYear")})
 public class Book implements Serializable {
 

@@ -36,6 +36,15 @@ public class BookRN {
         return book;
     }
     
+    public List<Book> findByTitle(String title) {
+        EntityManager manager = JPAUtil.createManager();
+        List<Book> bookList = manager.createNamedQuery("Book.findByTitle")
+                .setParameter(title, "title")
+                .getResultList();
+        manager.close();
+        return bookList;
+    }
+    
     public Book findByCode(String code) {
         EntityManager manager = JPAUtil.createManager();
         manager.getTransaction().begin();
