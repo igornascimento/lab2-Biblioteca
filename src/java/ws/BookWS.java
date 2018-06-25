@@ -21,6 +21,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 import entity.Book;
+import javax.ws.rs.QueryParam;
 import rn.BookRN;
 
 /**
@@ -49,8 +50,9 @@ public class BookWS {
     }
     
     @GET
+    @Path("/search")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Book> findByTitle(@PathParam("title") String title) {
+    public List<Book> findByTitle(@QueryParam("title") String title) {
         return bookRn.findByTitle(title);
     }
     

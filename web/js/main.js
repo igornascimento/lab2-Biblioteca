@@ -49,7 +49,7 @@ $(document).ready(function() {
 		$('#overlay').show();
 
 		$.ajax({
-			url: BASE_URL + 'books',
+			url: BASE_URL + 'books/search/',
 			method: 'GET',
 			data: {title: searchKeyWord},
 			success: function(data) {

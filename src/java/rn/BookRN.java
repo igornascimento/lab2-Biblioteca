@@ -39,7 +39,7 @@ public class BookRN {
     public List<Book> findByTitle(String title) {
         EntityManager manager = JPAUtil.createManager();
         List<Book> bookList = manager.createNamedQuery("Book.findByTitle")
-                .setParameter(title, "title")
+                .setParameter("title", "%" + title + "%")
                 .getResultList();
         manager.close();
         return bookList;
