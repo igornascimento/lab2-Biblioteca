@@ -19,9 +19,7 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item dropdown">
-                                <a class="nav-link" href="#" id="dropdown-livros" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="material-icons md-18">school</span> Livros <span class="sr-only">(current)</span>
-                                </a>
+                                <a class="nav-link" href="#" id="dropdown-livros" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="material-icons md-18">school</span> Livros</a>
                                 <div class="dropdown-menu" aria-labelledby="dropdown-livros">
                                     <a href="#livros/listar" class="dropdown-item">Listar</a>
                                     <a href="#livros/buscar" class="dropdown-item">Buscar</a>
@@ -45,8 +43,8 @@
                                 </div>
                             </li>
                         </ul>
-                        <form class="form-inline my-2 my-md-0">
-                            <input class="form-control" type="text" placeholder="Busca rápida" aria-label="Busca rápida">
+                        <form id="quick-search" class="form-inline my-2 my-md-0">
+                            <input id="quick-search-input" class="form-control" type="text" placeholder="Busca rápida" aria-label="Busca rápida">
                             <span class="material-icons md-light md-36 search-custom-button">search</span>
                         </form>
                     </div>
@@ -57,18 +55,104 @@
         <div class="container">
             <article id="response">
 
-                <div class="presentation">
+                <!-- <div class="presentation">
                     <h1>Biblioteca Municipal</h1>
                     <p>Bem Vindo à Bibloteca Municipal. Utilize o menu principal para navegar nos exemplares disponíveis.</p>
+                </div> -->
+
+                <h1>Exibindo resultados para "palavra-chave":</h1>
+                <div class="row">
+                    <div class="card-deck">
+                        <div class="card flex-md-row">
+                            <div class="card-body">
+                                <h5 class="card-title">Nome do livro</h5>
+                                <h6 class="card-subtitle">1956 - Doyle, Arthur C.</h6>
+                                <p class="card-text">Texto sobre o livro</p>
+                            </div>
+                            <img src="./img/books/1.jpg">
+                        </div>
+                        <div class="card flex-md-row">
+                            <div class="card-body">
+                                <h5 class="card-title">Nome do livro</h5>
+                                <h6 class="card-subtitle">1956 - Doyle, Arthur C.</h6>
+                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                            </div>
+                            <img src="./img/books/2.jpg">
+                        </div>
+                        <div class="card flex-md-row">
+                            <div class="card-body">
+                                <h5 class="card-title">Nome do livro</h5>
+                                <h6 class="card-subtitle">1956 - Doyle, Arthur C.</h6>
+                                <p class="card-text">Texto sobre o livro</p>
+                            </div>
+                            <img src="./img/books/3.jpg">
+                        </div>
+                    </div>
                 </div>
+                <span class="clear"></span>
+                <div class="row">
+                    <div class="card-deck">
+                        <div class="card flex-md-row">
+                            <div class="card-body">
+                                <h5 class="card-title">Nome do livro</h5>
+                                <h6 class="card-subtitle">1956 - Doyle, Arthur C.</h6>
+                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                            </div>
+                            <img src="./img/books/4.jpg">
+                        </div>
+                        <div class="card flex-md-row">
+                            <div class="card-body">
+                                <h5 class="card-title">Nome do livro</h5>
+                                <h6 class="card-subtitle">1956 - Doyle, Arthur C.</h6>
+                                <p class="card-text">Texto sobre o livro</p>
+                            </div>
+                            <img src="./img/books/5.jpg">
+                        </div>
+                        <div class="card flex-md-row">
+                            <div class="card-body">
+                                <h5 class="card-title">Nome do livro</h5>
+                                <h6 class="card-subtitle">1956 - Doyle, Arthur C.</h6>
+                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                            </div>
+                            <img src="./img/books/6.jpg">
+                        </div>
+                    </div>
+                </div>
+                <span class="clear"></span>
+                <div class="row">
+                    <div class="card-deck">
+                        <div class="card  flex-md-row">
+                            <div class="card-body">
+                                <h5 class="card-title">Nome do livro</h5>
+                                <h6 class="card-subtitle">1956 - Doyle, Arthur C.</h6>
+                                <p class="card-text">Texto sobre o livro</p>
+                            </div>
+                            <img src="./img/books/7.jpg">
+                        </div>
+                        <div class="card flex-md-row">
+                            <div class="card-body">
+                                <h5 class="card-title">Nome do livro</h5>
+                                <h6 class="card-subtitle">1956 - Doyle, Arthur C.</h6>
+                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                            </div>
+                            <img src="./img/books/8.jpg">
+                        </div>
+                    </div>
+
+                </div>
+                <span class="clear"></span>
 
             </article>
         </div>
 
+        <div id="overlay">
+            <!-- <iframe src="#" frameborder="0"></iframe> -->
+        </div>
 
         <script src="./js/jquery-3.3.1.min.js"></script>
         <script src="./js/popper.min.js"></script>
         <script src="./bootstrap-4.1.1-dist/js/bootstrap.min.js"></script>
-        <script src="./js/livros.js"></script>
+        <script src="./js/main.js"></script>
+        <script src="./js/books.js"></script>
     </body>
 </html>
