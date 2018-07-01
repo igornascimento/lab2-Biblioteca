@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Book.findAll", query = "SELECT b FROM Book b")
     , @NamedQuery(name = "Book.findByIsbn", query = "SELECT b FROM Book b WHERE b.isbn = :isbn")
-    , @NamedQuery(name = "Book.findByTitle", query = "SELECT b FROM Book b WHERE b.title like :title")
+    , @NamedQuery(name = "Book.findByTitle", query = "SELECT b FROM Book b WHERE UPPER(b.title) like UPPER(:title)")
     , @NamedQuery(name = "Book.findByEditor", query = "SELECT b FROM Book b WHERE b.editor like :editor")
     , @NamedQuery(name = "Book.findByPublishYear", query = "SELECT b FROM Book b WHERE b.publishYear = :publishYear")})
 public class Book implements Serializable {
@@ -60,15 +60,19 @@ public class Book implements Serializable {
     @Column(name = "publish_year")
     private Integer publishYear;
 
+    @Column(name = "cover")
+    private String cover;
+
     public Book() {
     }
     
-    public Book(String isbn, String title, List<Author> authors, String editor, int publishYear) {
+    public Book(String isbn, String title, List<Author> authors, String editor, int publishYear, String cover) {
         this.isbn = isbn;
         this.title = title;
         this.authors = authors;
         this.editor = editor;
         this.publishYear = publishYear;
+        this.cover = cover;
     }
 
     public Book(String isbn) {
@@ -122,6 +126,14 @@ public class Book implements Serializable {
 
     public void setPublishYear(Integer publishYear) {
         this.publishYear = publishYear;
+    }
+
+    public String getCover() {
+        return cover;
+    }
+
+    public void setCover(String cover) {
+        this.cover = cover;
     }
 
     @Override

@@ -1,9 +1,10 @@
 /**
 * Declare some global variables
 */
-var BASE_URL = 'http://localhost:8080/lab2-Biblioteca/api/',
-	searchKeyWord = null,
-	responseElement = $('article#response');
+const BASE_URL = 'http://localhost:8084/lab2-Biblioteca/',
+	  BOOKS_API = BASE_URL + 'api/books/',
+	  searchKeyWord = null,
+	  responseElement = $('article#response');
 
 
 /**
@@ -19,9 +20,11 @@ function mountBookResults(data) {
 		var authors = data[i].author,
 			printAuthors,
 			sep;
-		for (var j=0; j<authors.length; j++) {
-			printAuthors = sep + authors[j].lastName + ', ' + authors[j].firstName;
-			sep = '; ';
+		if (authors && authors.length > 0) {
+			for (var j=0; j<authors.length; j++) {
+				printAuthors += sep + authors[j].lastName + ', ' + authors[j].firstName;
+				sep = '; ';
+			}
 		}
 		if (i % 3 == 0) {
 			html += '</div></div><span class="clear"></span><div class="row"><div class="card-deck">';
@@ -32,7 +35,7 @@ function mountBookResults(data) {
 						'<h6 class="card-subtitle">'+ data[i].year +' - '+ printAuthors +'</h6>' +
 						'<p class="card-text">'+ data[i].shortDescription +'</p>' +
 					'</div>' +
-					'<img src="'+ data[i].img +'">' +
+					'<img src="'+ BASE_URL + 'img/books/' + data[i].img +'">' +
 				'</div>';
 	}
 	html += '</div></div>';
@@ -49,11 +52,13 @@ $(document).ready(function() {
 		$('#overlay').show();
 
 		$.ajax({
-			url: BASE_URL + 'books/search/',
+			url: BOOKS_API + 'search/',
 			method: 'GET',
 			data: {title: searchKeyWord},
 			success: function(data) {
 				html = mountBookResults(data);
+				$('#overlay').hide();
+				responseElement.html(html);
 			},
 			error: function() {
 				html = '<h1>Oops!</h1><p>Não foram encontrados resultados para a sua pesquisa.</p>';

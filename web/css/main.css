@@ -69,3 +69,7 @@ h1 {
     -khtml-opacity: 0.5;
 	/* border: dashed 10px red; */
 }
+
+.width-360 {
+	width: 360px;
+}
