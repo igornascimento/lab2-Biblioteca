@@ -28,6 +28,8 @@ a, a:hover {
 
 .search-custom-button {
 	margin: 0 0 3px 5px;
+	background: none;
+	border: none;
 }
 
 
@@ -72,4 +74,14 @@ h1 {
 
 .width-360 {
 	width: 360px;
+}
+.width-small {
+	width: 25%;
+}
+.width-medium {
+	width: 50%;
+}
+#form-books-feedback {
+	margin-top: 15px;
+	display: none;
 }

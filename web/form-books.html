@@ -1,0 +1,39 @@
+<h1>Cadastro de Livros</h1>
+
+<form id="book-registration" action="#">
+    <div class="form-group width-medium">
+        <label for="isbn">ISBN</label>
+        <input type="text" class="form-control" id="isbn" aria-describedby="isbnHelp" placeholder="ISBN">
+        <small id="isbnHelp" class="form-text text-muted">Informe o código ISBN do livro.</small>
+    </div>
+    <div class="form-group">
+        <label for="title">Título</label>
+        <input type="text" class="form-control" id="title" placeholder="Título">
+    </div>
+    <div class="form-group width-medium">
+        <label for="editor">Editora</label>
+        <input type="text" class="form-control" id="editor" placeholder="Editora">
+    </div>
+    <div class="form-group width-medium">
+        <label for="year">Ano de publicação</label>
+        <input type="text" class="form-control" id="year" placeholder="Ano de publicação">
+    </div>
+    <!-- <div class="form-group width-medium">
+        <label for="cover">Capa do livro</label>
+        <input type="file" class="form-control" id="cover" placeholder="Imagem de capa">
+    </div> -->
+    <div class="form-group width-medium">
+        <label for="cover">Ano de publicação</label>
+        <select class="form-control" id="cover">
+            <option>Selecione...</option>
+            <option value="1.jpg">capa 1</option>
+            <option value="2.jpg">capa 2</option>
+            <option value="3.jpg">capa 3</option>
+            <option value="4.jpg">capa 4</option>
+            <option value="5.jpg">capa 5</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary" id="register-books-submit">Cadastrar</button>
+</form>
+
+<div id="form-books-feedback" class="alert alert-success" role="alert">A simple success alert—check it out!</div>

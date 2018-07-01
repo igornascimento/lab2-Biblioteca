@@ -16,6 +16,7 @@ CREATE TABLE lab2biblioteca.book (
   title VARCHAR(100) NULL,
   editor VARCHAR(50) NULL,
   publish-year INT NULL,
+  cover VARCHAR(50) NULL,
   PRIMARY KEY (isbn));
 
 
@@ -66,6 +67,7 @@ CREATE TABLE postgres.book (
   title VARCHAR(100) NULL,
   editor VARCHAR(50) NULL,
   publish_year INT NULL,
+  cover VARCHAR(50) NULL,
   PRIMARY KEY (isbn));
 
 

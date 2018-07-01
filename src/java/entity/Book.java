@@ -60,6 +60,7 @@ public class Book implements Serializable {
     @Column(name = "publish_year")
     private Integer publishYear;
 
+    @Size(max = 50)
     @Column(name = "cover")
     private String cover;
 
