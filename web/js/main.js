@@ -106,12 +106,18 @@ $(document).ready(function() {
 				$.ajax({
 					url: BOOKS_API,
 					method: 'POST',
+					dataType: 'json',
+					headers: { 
+						'Accept': 'application/json',
+						'Content-Type': 'application/json' 
+					},
 					data: {
-						id: $('#isbn').val(),
+						code: $('#isbn').val(),
 						title: $('#title').val(),
 						editor: $('#editor').val(),
-						publish_year: $('#year').val(),
-						cover: $('#cover').val()
+						publishYear: $('#year').val(),
+						cover: $('#cover').val(),
+						authors: [{id: 1}]
 					},
 					success: function() {
 						$('#overlay').hide();
