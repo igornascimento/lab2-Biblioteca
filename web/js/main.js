@@ -135,12 +135,18 @@ $(document).ready(function() {
 
 			// Books registration POST
 			$('#register-books-submit').on('click', function(ev) {
+				let selectAuthors = $('.select-authors-list option:selected'),
+					arrAuthors = [];
+				selectAuthors.each(function() {
+					arrAuthors.push({id: this.value});
+				});
+				console.log(arrAuthors);
 				let book = new Book(
 					$('#isbn').val(),
 					$('#title').val(),
 					$('#editor').val(),
 					$('#year').val(),
-					$('#author').val() == 'Selecione...' ? [] : [$('#author').val()],
+					arrAuthors,
 					$('#cover').val()
 				);
 				$('#overlay').show();
