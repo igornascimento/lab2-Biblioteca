@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "book")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Book.findAll", query = "SELECT b FROM Book b")
+    @NamedQuery(name = "Book.findAll", query = "SELECT b FROM Book b ORDER BY b.title ASC")
     , @NamedQuery(name = "Book.findByIsbn", query = "SELECT b FROM Book b WHERE b.isbn = :isbn")
     , @NamedQuery(name = "Book.findByTitle", query = "SELECT b FROM Book b WHERE UPPER(b.title) like UPPER(:title)")
     , @NamedQuery(name = "Book.findByEditor", query = "SELECT b FROM Book b WHERE b.editor like :editor")

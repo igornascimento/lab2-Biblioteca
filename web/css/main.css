@@ -49,6 +49,19 @@ h1 {
 .card-body p {
 	margin: 10px 0 10px;
 }
+/* .card {
+	position: relative;
+}
+.book-rent, .book-edit {
+	position: absolute;
+	bottom: 10px;
+}
+.book-rent {
+	left: 25px;
+}
+.book-edit {
+	left: 100px;
+} */
 
 .clear {
 	display: block;
