@@ -3,8 +3,10 @@
 */
 const BASE_URL = 'http://localhost:8080/lab2-Biblioteca/',
 	  BOOKS_API = BASE_URL + 'api/books/',
+	  AUTHORS_API = BASE_URL + 'api/authors/',
 	  responseElement = $('article#response');
-let   searchKeyWord = null;
+let   searchKeyWord = null,
+	  authors = [];
 
 
 /**
@@ -79,7 +81,6 @@ $(document).ready(function() {
 	 */
 	$('#list-books').click(function() {
 		$('#overlay').show();
-
 		$.ajax({
 			url: BOOKS_API,
 			method: 'GET',
@@ -96,37 +97,70 @@ $(document).ready(function() {
 	});
 
 	/**
+	 * Loads the Authors list
+	 */
+	$.ajax({
+		url: AUTHORS_API,
+		method: 'GET',
+		success: function(data) {
+			// console.log(JSON.stringify(data));
+			data.map(el => authors.push(new Author(el.id, el.name, el.surname, el.country)));
+		},
+		error: function() {
+			console.log('WARNING: Error geting the AUTHORS list.');
+		}
+	});
+
+	/**
 	 * Books registration form
 	 */
 	$('#register-books').click(function() {
+		$('#overlay').show();
 		responseElement.load('form-books.html', function() {
+			let selectAuthorListGroup = $('.select-authors-list-group');
+			$('#overlay').hide();
+
+			// fill the authors select
+			let htmlAuthors = '';
+			authors.forEach(function(author) {
+				htmlAuthors += '<option value="'+author.id+'">'+author.name+' '+author.surname+'</option>'
+			});
+			$('.select-authors-list').append(htmlAuthors);
+
+			// duplicates author selector
+			$('.add-author').on('click', function(){
+				console.log('cloning authors');
+				selectAuthorListGroup.clone(true).appendTo($('#appender'));
+			});
+
 			// Books registration POST
 			$('#register-books-submit').on('click', function(ev) {
+				let book = new Book(
+					$('#isbn').val(),
+					$('#title').val(),
+					$('#editor').val(),
+					$('#year').val(),
+					$('#author').val() == 'Selecione...' ? [] : [$('#author').val()],
+					$('#cover').val()
+				);
+				$('#overlay').show();
 				ev.preventDefault();
 				$.ajax({
 					url: BOOKS_API,
 					method: 'POST',
 					dataType: 'json',
-					headers: { 
-						'Accept': 'application/json',
-						'Content-Type': 'application/json' 
-					},
-					data: {
-						code: $('#isbn').val(),
-						title: $('#title').val(),
-						editor: $('#editor').val(),
-						publishYear: $('#year').val(),
-						cover: $('#cover').val(),
-						authors: [{id: 1}]
-					},
+					headers: {'Content-Type': 'application/json'},
+					data: JSON.stringify(book),
 					success: function() {
 						$('#overlay').hide();
 						$('#form-books-feedback').removeClass('alert-danger').addClass('alert-success')
-							.html('Livro salvo com sucesso!');
+							.html('Livro salvo com sucesso!').show();
+						$('#overlay').hide();
 					},
 					error: function() {
 						$('#form-books-feedback').removeClass('alert-success').addClass('alert-danger')
-							.html('Atenção: Verifique as informações preenchidas.');
+							.html('Atenção: Verifique as informações preenchidas.').show();
+						$('#overlay').hide();
 					}
 				});
 			});

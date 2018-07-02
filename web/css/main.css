@@ -85,3 +85,9 @@ h1 {
 	margin-top: 15px;
 	display: none;
 }
+.input-group-text {
+	cursor: pointer;
+}
+.input-group-text:hover {
+	text-decoration: underline;
+}
