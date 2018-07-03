@@ -17,6 +17,12 @@ $(document).ready(function() {
 	$('#register-books').click( bookController.showBooksForm );
 	
 	/**
+	 * Authors loading
+	 */
+	let authorsController = new AuthorsController();
+	authorsController.loadList(authors);
+
+	/**
 	 * Books search
 	 */
 	$('#quick-search').submit(function(ev) {

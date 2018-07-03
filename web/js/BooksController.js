@@ -4,7 +4,7 @@ class BooksController {
      * Shows the book registration form
      */
     showBooksForm(ev, code) {
-        let editAuthors;
+        let editAuthors = [];
         $('#overlay').show();
 
         /**
@@ -30,6 +30,9 @@ class BooksController {
             });
         }
 
+        /**
+         * Showing the form for registration
+         */
         responseElement.load('form-books.html', function() {
 
             let selectAuthorListGroup = $('.select-authors-list-group');
@@ -38,10 +41,11 @@ class BooksController {
             // fill the authors select
             let htmlAuthors = '';
             authors.forEach(function(author) {
+                let selected = '';
                 editAuthors.forEach(function(edAuthor) {
-                    let selected = (author.id == edAuthor.id) ? 'selected' : '';
-                    htmlAuthors += '<option value="'+author.id+'" '+selected+'>'+author.name+' '+author.surname+'</option>'
+                    selected = (author.id == edAuthor.id) ? 'selected' : '';
                 });
+                htmlAuthors += '<option value="'+author.id+'" '+selected+'>'+author.name+' '+author.surname+'</option>'
             });
             $('.select-authors-list').append(htmlAuthors);
     
