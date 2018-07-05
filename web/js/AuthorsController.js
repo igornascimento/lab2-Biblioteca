@@ -3,7 +3,7 @@ class AuthorsController {
     /**
      * Loads the Authors list
      */
-    loadList() {
+    loadList(authors) {
         $.ajax({
             url: AUTHORS_API,
             method: 'GET',
