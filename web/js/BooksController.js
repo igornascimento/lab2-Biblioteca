@@ -120,7 +120,7 @@ class BooksController {
             if (i % 3 == 0) {
                 html += '</div></div><span class="clear"></span><div class="row"><div class="card-deck">';
             }
-            html += '<a href="?bookId='+ data[i].code +'" class="card flex-md-row book-edit">' +
+            html += '<a href="?bookId='+ data[i].code +'" class="card flex-md-row book-edit width-360">' +
                         '<div class="card-body">' +
                             '<h5 class="card-title">' + data[i].title + '</h5>' +
                             '<p class="card-text">'+ 

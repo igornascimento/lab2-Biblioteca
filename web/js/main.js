@@ -15,6 +15,8 @@ $(document).ready(function() {
 	 */
 	let bookController = new BooksController();
 	$('#register-books').click( bookController.showBooksForm );
+	let authorsController = new AuthorsController();
+	$('#register-authors').click( authorsController.showAuthorsForm );
 	
 	/**
 	 * Books search
@@ -62,7 +64,7 @@ $(document).ready(function() {
 					responseElement.html(html);
 					bookController.loadEditEvent(bookController);
 				} else {
-					html = '<h1>Oops!</h1><p>Não foram encontrados resultados.</p>';	
+					html = '<h1>Oops!</h1><p>Não foram encontrados resultados.</p>';
 				}
 				$('#overlay').hide();
 			},
@@ -72,6 +74,33 @@ $(document).ready(function() {
 			}
 		});
 		ev.preventDefault();
+	});
+
+	/**
+	 * Authors list
+	 */
+	$('#list-authors').click(function(){
+		let html = '';
+        $('#overlay').show();
+        $.ajax({
+            url: AUTHORS_API,
+            method: 'GET',
+            success: (data) => {
+                if (data.length > 0) {
+					html = authorsController.mountAuthorsResults(null, data);
+                    $('#overlay').hide();
+                } else {
+					html = '<h1>Oops!</h1><p>Não foram encontrados resultados.</p>';
+				}
+				responseElement.html(html);
+				authorsController.loadEditEvent(authorsController);
+            },
+            error: () => {
+                html = '<h1>Oops!</h1><p>Não foram encontrados resultados.</p>';
+                $('#overlay').hide();
+            }
+		});
+		
 	});
 	
 });

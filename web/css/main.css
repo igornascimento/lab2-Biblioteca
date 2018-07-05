@@ -36,6 +36,9 @@ a, a:hover {
 h1 {
 	margin: 30px 0 40px;
 }
+.h5, h5 {
+	font-size: 1.10rem;
+}
 
 .presentation {
 	text-align: center;
@@ -94,7 +97,8 @@ h1 {
 .width-medium {
 	width: 50%;
 }
-#form-books-feedback {
+#form-books-feedback,
+#form-authors-feedback {
 	margin-top: 15px;
 	display: none;
 }
