@@ -97,7 +97,7 @@ class AuthorsController {
                     let author = new Author(authorId, $('#name').val(), $('#surname').val(), $('#country').val());
 
                     $.ajax({
-                        url: AUTHORS_API + (id ? id : ''),
+                        url: AUTHORS_API + id,
                         method: methodToCall,
                         dataType: 'json',
                         headers: {'Content-Type': 'application/json'},

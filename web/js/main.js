@@ -21,7 +21,6 @@ $(document).ready(function() {
 	/**
 	 * Authors loading
 	 */
-	let authorsController = new AuthorsController();
 	authorsController.loadList(authors);
 
 	/**

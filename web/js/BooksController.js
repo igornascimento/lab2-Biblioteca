@@ -73,11 +73,10 @@ class BooksController {
                 ev.preventDefault();
                 $('#overlay').show();
                 let book = new Book($('#isbn').val(), $('#title').val(), $('#editor').val(), $('#year').val(), arrAuthors, $('#cover').val());
-                
-                methodToCall = code ? 'PUT' : 'POST';
+                let methodToCall = code ? 'PUT' : 'POST';
 
                 $.ajax({
-                    url: BOOKS_API,
+                    url: BOOKS_API + code,
                     method: methodToCall,
                     dataType: 'json',
                     headers: {'Content-Type': 'application/json'},
